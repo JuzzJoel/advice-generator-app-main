@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Advice generator app</title>
+  <style>
+    *,
+    *::after,
+    *::before{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root{
+      --Blue-200: hsl(193, 38%, 86%);
+--Green-300: hsl(150, 100%, 66%);
+--Blue-600: hsl(217, 19%, 38%);
+--Blue-900: hsl(217, 19%, 24%);
+--Blue-950: hsl(218, 23%, 16%);
+    }
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+
+    body{
+      width: 100vw;
+      height: 100vh;
+      font-family: "Manrope", sans-serif;
+      background: var(--Blue-950);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .container{
+      width: 1000px;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .content{
+      background: var(--Blue-900);
+      height:80%;
+      width: 60%;
+      border-radius: 0.7rem;
+      box-shadow: 0 0 .7rem .4rem rgba( 0 , 0 , 0 , 0.15 );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .card{
+      width: 80%;
+      height: 60%;
+      color: var(--Green-300);
+      text-transform: uppercase;
+      font-size: .6rem;
+      letter-spacing: 3px;
+      font-weight: 300;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-evenly;
+      margin-bottom: 10%;
+    }
+    .quotes{
+      font-size: 1.8rem;
+      color:white;
+      text-transform: capitalize;
+      font-size: 28px;
+    }
+    .cube-container{
+position: absolute;
+left: 50%;
+bottom: -5%;
+transform: translateX(-50%);
+background: var(--Green-300);
+border-radius: 50%;
+cursor: pointer;
+    }
+    .cube{
+      padding: 10px;
+      display: flex;
+    }
+    .divider{
+position: absolute;
+width: 80%;
+top: 80%;
+left: 50%;
+transform: translateX(-50%);
+    }
+    .id{
+
+    }
+    @media (max-width:767px) {
+      
+      .container{
+        width: 90%;
+        height: 60vh;
+      }
+      .content{
+        width: 100%;
+        height: 100%;
+      }
+.card{
+  justify-content: space-around;
+  align-items: center;
+}
+.quotes{
+  font-size: 15px;
+}
+      .cube{
+        padding: 9px;
+      }
+    }
+  
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      <div class="card">
+       <span class="together">Advice #<span class="id"></span></span>
+        
+        <span class="quotes">
+         
+        </span>
+        <div class="cube-container">
+          <img src="/images/icon-dice.svg" alt="picture of a cube" class="cube">
+        </div>
+
+        <img src="/images/pattern-divider-desktop.svg" alt="card divider" class="divider">
+        </div>
+      </div>
+  </div>
+
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://startbootstrap-personal.vercel.app/">Olajire Joel</a>.
+  </div>
+  <script>
+    const quotes = [
+        "Believe you can and you're halfway there.",
+        "The only way to do great work is to love what you do.",
+        "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+        "Don't watch the clock; do what it does. Keep going.",
+        "You miss 100% of the shots you don't take.",
+        "I have not failed. I've just found 10,000 ways that won't work.",
+        "You are never too old to set another goal or to dream a new dream.",
+        "The best way to predict your future is to create it.",
+        "Do something today that your future self will thank you for.",
+        "You don't have to be great to start, but you have to start to be great.",
+        "Keep your eyes on the stars, and your feet on the ground.",
+        "You are stronger than you seem, braver than you believe, and smarter than you think.",
+        "The future belongs to those who believe in the beauty of their dreams.",
+        "It always seems impossible until it's done.",
+        "Don't be afraid to give up the good to go for the great.",
+        "You can't start the next chapter of your life if you keep re-reading the last one.",
+        "The best revenge is massive success.",
+        "Do not let what you cannot do interfere with what you can do.",
+        "You don't have to control your thoughts. You just have to stop letting them control you.",
+        "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+        "Life is 10% what happens to you and 90% how you react to it.",
+        "If you can't fly then run, if you can't run then walk, if you can't walk then crawl, but whatever you do you have to keep moving forward.",
+        "You are never too young to lead and never too old to learn.",
+        "The biggest risk is not taking any risk.",
+        "You don't have to be perfect to be amazing.",
+        "Do not go where the path may lead; go instead where there is no path and leave a trail.",
+        "It does not matter how slowly you go as long as you do not stop.",
+        "You are the average of the five people you spend the most time with.",
+        "The best is yet to come.",
+        "Happiness is not something ready-made. It comes from your own actions.",
+        "The biggest adventure you can take is to live the life of your dreams.",
+        "You can't please everyone, and you can't make everyone like you.",
+        "The most important thing in life is to learn how to give out love, and let it come in.",
+        "The greatest wealth is to live content with little.",
+        "The best way to find yourself is to lose yourself in the service of others.",
+        "You can't go back and change the beginning, but you can start where you are and change the ending.",
+        "The most successful people are those who are good at plan B.",
+        "Don't let yesterday take up too much of today.",
+        "You are stronger than you think, braver than you believe, and loved more than you know.",
+        "The best way to get started is to quit talking and begin doing.",
+        "Life begins at the end of your comfort zone.",
+        "You don't have to see the whole staircase, just take the first step.",
+        "The power of imagination makes us infinite.",
+        "The best time to plant a tree was 20 years ago. The second best time is now.",
+        "You can't start a fire without a spark.",
+        "The most important thing is to never stop believing in yourself.",
+        "The best is yet to come, and it will be bigger and better than anything you've ever imagined.",
+        "You are one step closer to your goal with every step you take.",
+        "The key is not to prioritize what's on your schedule, but to schedule your priorities.",
+        "The best way to find out what you're truly capable of is to take a risk and see what happens.",
+        "Don't let fear stop you from living the life you want.",
+        "The most successful people are those who have a clear vision of what they want.",
+        "You can't achieve greatness without taking risks.",
+        "The best way to learn is by doing.",
+        "You are capable of amazing things.",
+        "The most important thing is to never give up on your dreams.",
+        "The best is yet to come, and it's going to be amazing.",
+        "You are stronger than you think and braver than you believe.",
+        "The biggest risk is not taking any risk.",
+        "You don't have to be perfect to be amazing.",
+        "The best way to predict your future is to create it.",
+        "Do something today that your future self will thank you for.",
+        "Life is too short to waste time on things that don't make you happy.",
+        "You can't control the wind, but you can adjust your sails.",
+        "The best version of you is yet to come.",
+        "Don't compare your life to others; compare your progress to your own.",
+        "The only person you should try to be better than is the person you were yesterday.",
+        "Happiness is a choice; choose wisely.",
+        "You are not a mistake; you are a learning experience.",
+        "The most powerful thing in the world is the human mind.",
+        "Your thoughts are the architects of your destiny.",
+        "Don't let what you can't do stop you from doing what you can do.",
+        "The best revenge is to be unlike those who started the damage.",
+        "You can't go back and change the beginning, but you can start where you are and change the ending.",
+        "The greatest wealth is health.",
+        "You don't have to be fearless to be courageous.",
+        "The best way to get what you want is to deserve what you want.",
+        "The most important thing in life is to have a sense of purpose.",
+        "You are capable of more than you think.",
+        "The biggest adventure is what lies ahead.",
+        "Don't let anyone dull your sparkle.",
+        "You are unique, and that's what makes you special.",
+        "The best is yet to come, and it's going to be amazing.",
+        "Life is a journey, not a destination.",
+        "You can't start the next chapter of your life if you keep re-reading the last one.",
+        "The most successful people are those who have a clear vision of what they want.",
+        "You are stronger than you seem, braver than you believe, and smarter than you think.",
+        "The future belongs to those who believe in the beauty of their dreams.",
+        "It always seems impossible until it's done.",
+        "Don't be afraid to give up the good to go for the great.",
+        "You can't please everyone, and you can't make everyone like you.",
+        "The most important thing is to never stop believing in yourself.",
+        "The best way to find out what you're truly capable of is to take a risk and see what happens.",
+        "Don't let fear stop you from living the life you want.",
+        "You are one step closer to your goal with every step you take.",
+        "The key is not to prioritize what's on your schedule, but to schedule your priorities.",
+        "The best way to learn is by doing.",
+        "You are capable of amazing things.",
+        "The most important thing is to never give up on your dreams.",
+        "The best is yet to come, and it's going to be amazing.",
+        "You are stronger than you think and braver than you believe.",
+        "The biggest risk is not taking any risk.",
+        "You don't have to be perfect to be amazing.",
+        "The best way to predict your future is to create it.",
+        "Do something today that your future self will thank you for.",
+        "You are one decision away from a totally different life.",
+        "Life is 10% what happens to you and 90% how you react to it.",
+        "If you can't fly then run, if you can't run then walk, if you can't walk then crawl, but whatever you do you have to keep moving forward.",
+        "You are never too young to lead and never too old to learn.",
+        "The biggest adventure you can take is to live the life of your dreams.",
+        "You can't start a fire without a spark.",
+        "The most important thing is to never stop believing in yourself.",
+        "The best is yet to come, and it will be bigger and better than anything you've ever imagined.",
+        "You are one step closer to your goal with every step you take.",
+        "The key is not to prioritize what's on your schedule, but to schedule your priorities.",
+        "The best way to get started is to quit talking and begin doing.",
+        "Life begins at the end of your comfort zone.",
+        "You don't have to see the whole staircase, just take the first step.",
+        "The power of imagination makes us infinite.",
+        "The best time to plant a tree was 20 years ago. The second best time is now.",
+        "You are capable of more than you think.",
+        "The most important thing in life is to have a sense of purpose.",
+        "You are unique, and that's what makes you special.",
+        "The best way to find out what you're truly capable of is to take a risk and see what happens.",
+        "Don't let fear stop you from living the life you want.",
+        "The most successful people are those who have a clear vision of what they want.",
+        "You are stronger than you seem, braver than you believe, and smarter than you think.",
+          "The best version of you is the one that is authentic and true.",
+          "Don't let the opinions of others define your self-worth.",
+          "You are capable of creating the life you desire.",
+          "The most powerful tool you have is your mind.",
+          "Believe in yourself, and anything is possible.",
+          "The best way to get what you want is to focus on what you have.",
+          "You can't control the outcome, but you can control your reaction.",
+          "Life is a reflection of your thoughts and actions.",
+          "The most important thing is to be true to yourself.",
+          "You are stronger than you think, and you can overcome any obstacle.",
+          "Don't let fear hold you back from pursuing your dreams.",
+          "The best way to learn is by experience.",
+          "You are unique, and your uniqueness is what makes you special.",
+          "The most successful people are those who are willing to take risks.",
+          "Don't compare yourself to others; compare yourself to who you were yesterday.",
+          "The best way to predict your future is to create it.",
+          "You are capable of achieving great things.",
+          "The most important thing is to never give up on your dreams.",
+          "You are one step closer to your goal with every step you take.",
+          "The key to success is to focus on the process, not just the outcome.",
+          "You are stronger than you seem, braver than you believe, and smarter than you think.",
+          "The future belongs to those who believe in the beauty of their dreams.",
+          "It always seems impossible until it's done.",
+          "Don't be afraid to ask for help when you need it.",
+          "You are not alone; there are people who care about you.",
+          "The best way to find happiness is to focus on the present moment.",
+          "You can't please everyone, and that's okay.",
+          "The most important thing is to be kind to yourself and others.",
+          "You are capable of overcoming any challenge.",
+          "The best way to learn is by doing.",
+          "You are unique, and that's what makes you special.",
+          "The most successful people are those who are willing to learn from their mistakes.",
+          "Don't let what others think bring you down.",
+          "You are stronger than you think, and you can achieve anything.",
+          "The best way to get started is to quit talking and begin doing.",
+          "Life begins at the end of your comfort zone.",
+          "You don't have to see the whole staircase, just take the first step.",
+          "The power of imagination makes us infinite.",
+          "The best time to take action is now.",
+          "You are capable of creating the life you desire.",
+          "The most important thing is to never stop believing in yourself.",
+          "The best is yet to come, and it's going to be amazing.",
+          "You are one decision away from a totally different life.",
+          "Life is 10% what happens to you and 90% how you react to it.",
+          "If you can't fly then run, if you can't run then walk, if you can't walk then crawl, but whatever you do you have to keep moving forward.",
+          "You are never too young to lead and never too old to learn.",
+          "The biggest adventure you can take is to live the life of your dreams.",
+          "You can't start a fire without a spark.",
+          "The most important thing is to never stop believing in yourself."
+    ]
+
+   
+    let cube = document.querySelector(".cube-container");
+    let id = document.querySelector(".id");
+    let quoteDisplay = document.querySelector(".quotes");
+
+    let currentQuoteIndex = 0;
+
+    cube.addEventListener("click", () => {
+      currentQuoteIndex = Math.floor(Math.random() * quotes.length);
+      quoteDisplay.innerText = `"${quotes[currentQuoteIndex]}"`;
+      id.innerText = currentQuoteIndex + 1; 
+    });
+
+    
+  </script>
+</body>
+</html>
